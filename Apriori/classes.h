@@ -10,6 +10,7 @@ public:
 	
 	void buildItemsets();
 	void pruneItemsets();
+
 };
 
 class Itemset:public ItemsetHolder

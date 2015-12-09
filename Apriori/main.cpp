@@ -1,4 +1,5 @@
 #include "classes.h"
+#include "functions.cpp"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -12,6 +13,8 @@ int main()
 	while (!shouldExit)
 	{
 		char entry;
+		string filename;
+		double support;
 
 		cout << "Please select an option.\n\nR - Run Apriori\nQ - Quit\n\n";
 		cin >> entry;
@@ -23,7 +26,20 @@ int main()
 		}
 		else if (entry == 'R' || entry == 'r')
 		{
-			//run apriori
+			cout << "Please enter filename.";
+			cin >> filename;
+
+			ifstream inputFile(filename);
+
+			if (inputFile.good())
+			{
+				buildDatabase(inputFile, filename);
+
+
+
+			}
+			else
+				cout << "\nFile not found!\n\n";
 		}
 		else
 		{
