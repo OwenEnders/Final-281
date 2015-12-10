@@ -1,5 +1,5 @@
 #include "classes.h"
-#include "functions.cpp"
+#include "functions.h"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -28,18 +28,7 @@ int main()
 		{
 			cout << "Please enter filename.";
 			cin >> filename;
-
-			ifstream inputFile(filename);
-
-			if (inputFile.good())
-			{
-				buildDatabase(inputFile, filename);
-
-
-
-			}
-			else
-				cout << "\nFile not found!\n\n";
+			buildDatabase(filename);
 		}
 		else
 		{
