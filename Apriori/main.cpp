@@ -26,7 +26,7 @@ int main()
 		}
 		else if (entry == 'R' || entry == 'r')
 		{
-			cout << "Please enter filename.";
+			cout << "Please enter filename.\n";
 			cin >> filename;
 			buildDatabase(filename);
 		}
@@ -36,6 +36,6 @@ int main()
 		}
 	}
 
-	system("pause");
+	cin.get();
 
 }

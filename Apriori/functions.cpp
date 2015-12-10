@@ -1,9 +1,12 @@
 #include "functions.h"
 
-void buildDatabase(string filename)
+int** buildDatabase(string filename)
 {
-	int databaseArray[50][100000]; //first element is the number of items in a transaction - playing it safe at 50, though the highest average is 25.
-								   //second element is the total number of transactions. 100k is the max ever used
+	int **databaseArray = new int* [100000]; //first element is the number of items in a transaction - playing it safe at 50, though the highest average is 25.
+	for (int i = 0; i < 100000; i++)
+	{
+		databaseArray[i] = new int[50];
+	}//second element is the total number of transactions. 100k is the max ever used
 	int transaction, item, i = 0, j = -1, tmp = 0;
 
 	ifstream inputFile(filename);
@@ -33,7 +36,7 @@ void buildDatabase(string filename)
 			i++;
 			databaseArray[i + 1][j] = item;
 		}
-
+		cout << "\n" << item << " added!";
 	}
-
+	return databaseArray;
 }
