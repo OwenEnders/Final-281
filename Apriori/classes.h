@@ -2,7 +2,6 @@
 
 
 
-
 class ItemsetHolder
 {
 public:

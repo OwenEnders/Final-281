@@ -28,7 +28,8 @@ int main()
 		{
 			cout << "Please enter filename.\n";
 			cin >> filename;
-			buildDatabase(filename);
+			arrayDisplayer(buildDatabase(filename));
+
 		}
 		else
 		{
