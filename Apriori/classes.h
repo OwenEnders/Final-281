@@ -1,4 +1,4 @@
-
+#include "linkedList.h"
 
 
 
@@ -7,7 +7,7 @@ class ItemsetHolder
 public:
 	//DynamicArray itemsets;
 	
-	void buildItemsets();
+	void buildItemsets(int** database);
 	void pruneItemsets();
 
 };
@@ -15,7 +15,8 @@ public:
 class Itemset:public ItemsetHolder
 {
 public:
-	//LinkedList items;
+	LinkedList<int> items;
+
 	void determineSupport();
 
 private:

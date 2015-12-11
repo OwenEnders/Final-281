@@ -1,5 +1,6 @@
 #include "classes.h"
 #include "functions.h"
+#include "linkedList.h"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -29,6 +30,7 @@ int main()
 			cout << "Please enter filename.\n";
 			cin >> filename;
 			arrayDisplayer(buildDatabase(filename));
+
 
 		}
 		else

@@ -43,6 +43,7 @@ int** buildDatabase(string filename)
 
 void arrayDisplayer(int** array)
 {
+	cout << "\n\n";
 	for (int i = 0; i<9; i++)    //This loops on the rows.
 	{
 		for (int j = 0; j<9; j++) //This loops on the columns
