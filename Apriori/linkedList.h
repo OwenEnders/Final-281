@@ -23,7 +23,7 @@ class LinkedList
 	template <typename R>
 	struct Node
 	{
-		R       mData;
+		R       mSupport, mItemset[];
 		Node<T> *mNext;
 
 		/*      Pre:  None
@@ -32,7 +32,8 @@ class LinkedList
 		*************************************************************************/
 		Node()
 		{
-			mData = R();
+			mSupport = R();
+			mItemset[] = R();
 			mNext = NULL;
 		}
 
@@ -41,9 +42,10 @@ class LinkedList
 		*     Post:  This object is initialized using specified data
 		*  Purpose:  To intialize date object
 		*************************************************************************/
-		Node(R data)
+		Node(R itemset)
 		{
-			mData = data;
+			mItemset[] = itemset
+			mSupport = 0;
 			mNext = NULL;
 		}
 	};
