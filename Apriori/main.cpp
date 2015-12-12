@@ -17,6 +17,9 @@ int main()
 		string filename;
 		double support;
 
+		//maybe
+		ItemsetHolder setHolder;
+
 		cout << "Please select an option.\n\nR - Run Apriori\nQ - Quit\n\n";
 		cin >> entry;
 
@@ -29,7 +32,7 @@ int main()
 		{
 			cout << "Please enter filename.\n";
 			cin >> filename;
-			arrayDisplayer(buildDatabase(filename));
+			setHolder.buildItemsets(buildDatabase(filename));
 
 
 		}

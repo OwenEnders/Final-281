@@ -23,7 +23,6 @@ public:
 	/*void determineSupport();*/
 	Itemset()
 	{
-		mArray = NULL;
 	}
 
 	Itemset(int* passArray)
@@ -37,4 +36,4 @@ public:
 	}
 private:
 
-};
+}

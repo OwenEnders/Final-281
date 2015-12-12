@@ -244,6 +244,7 @@ bool LinkedList<T>::insert(T data)
 		{
 			delete newNode;
 			return false;
+		}
 	}
 
 	mCount++;

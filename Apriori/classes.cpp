@@ -24,6 +24,7 @@ void ItemsetHolder::buildItemsets(int** database)
 
 void ItemsetHolder::pruneItemsets( int support)
 {
+	
 	//go through array, if an itemsets support isnt great enough, destroy the itemset.
 	//every time function is called, start off where it last stopped, instead of at the beginning of the array
 }
