@@ -135,7 +135,7 @@ T LinkedList<T>::getData(int index)
 	for (i = 0; i < index; i++)
 		tmp = tmp->mNext;
 
-	return tmp->mData;
+	return tmp->mItemset[];
 }
 
 
@@ -145,21 +145,21 @@ T LinkedList<T>::getData(int index)
 *            data
 *  Purpose:  To update the specified nodes in the list
 *****************************************************************************/
-template <typename T>
-void LinkedList<T>::setData(int index, T data)
-{
-	int     i;
-	Node<T> *tmp;
-
-	if (index < 0 || index >= mCount)
-		return;
-
-	tmp = mHead;
-	for (i = 0; i < index; i++)
-		tmp = tmp->mNext;
-
-	tmp->mData = data;
-}
+//template <typename T>
+//void LinkedList<T>::setData(int index, T data)
+//{
+//	int     i;
+//	Node<T> *tmp;
+//
+//	if (index < 0 || index >= mCount)
+//		return;
+//
+//	tmp = mHead;
+//	for (i = 0; i < index; i++)
+//		tmp = tmp->mNext;
+//
+//	tmp->mData = data;
+//}
 
 
 
@@ -199,7 +199,7 @@ void LinkedList<T>::display()
 	tmp = mHead;
 	while (tmp != NULL)
 	{
-		cout << tmp->mData << " ";
+		cout << tmp->mItemset[] << " has a support of: " << tmp->mSupport ;
 		tmp = tmp->mNext;
 	}
 	cout << endl;
@@ -227,42 +227,23 @@ bool LinkedList<T>::insert(T data)
 	}
 	else
 	{
-		if (data < mHead->mData)
+		tmp = mHead;
+		oneBefore = mHead;
+		while (tmp->mItemset < data)
 		{
-			newNode->mNext = mHead;
-			mHead = newNode;
+			oneBefore = tmp;
+			tmp = tmp->mNext;
 		}
-		else if (data > mTail->mData)
+
+		if (tmp->mItemset != data)
 		{
-			mTail->mNext = newNode;
-			mTail = newNode;
-		}
-		else if (data == mHead->mData || data == mTail->mData)
-		{
-			delete newNode;
-			return false;
+			newNode->mNext = tmp;
+			oneBefore->mNext = newNode;
 		}
 		else
 		{
-			tmp = mHead;
-			oneBefore = mHead;
-			while (tmp->mData < data)
-			{
-				oneBefore = tmp;
-				tmp = tmp->mNext;
-			}
-
-			if (tmp->mData != data)
-			{
-				newNode->mNext = tmp;
-				oneBefore->mNext = newNode;
-			}
-			else
-			{
-				delete newNode;
-				return false;
-			}
-		}
+			delete newNode;
+			return false;
 	}
 
 	mCount++;
@@ -309,64 +290,64 @@ bool LinkedList<T>::isExist(T searchKey)
 }
 
 
-/*      Pre:  The list is instantiated and the searchKey is available
+/*     Pre:  The list is instantiated and the searchKey is available
 *     Post:  If the searchKey exists, removes it from the list and the
 *            function returns true; otherwise the function does nothing
 *            and returns false
 *  Purpose:  To remove a specific value from the list
 *****************************************************************************/
-template <typename T>
-bool LinkedList<T>::remove(T searchKey)
-{
-	Node<T> *tmp, *prev;
-
-	if (mHead == NULL)
-		return false;
-	else if (searchKey < mHead->mData || searchKey > mTail->mData)
-		return false;
-
-	tmp = mHead;
-	prev = NULL;
-	for (int i = 0; i < mCount; i++)
-	{
-		if (searchKey == tmp->mData)
-			break;
-
-		prev = tmp;
-		tmp = tmp->mNext;
-	}
-
-	if (tmp != NULL)
-	{
-		if (tmp == mHead)
-		{
-			tmp = mHead;
-
-			mHead = mHead->mNext;
-			if (mHead == NULL)
-				mTail = NULL;
-
-			tmp->mNext = NULL;
-		}
-		else if (tmp == mTail)
-		{
-			prev->mNext = NULL;
-			mTail = prev;
-		}
-		else
-		{
-			prev->mNext = tmp->mNext;
-			tmp->mNext = NULL;
-		}
-
-		delete tmp;
-		mCount--;
-
-		return true;
-	}
-
-	return false;
-}
+//template <typename T>
+//bool LinkedList<T>::remove(T searchKey)
+//{
+//	Node<T> *tmp, *prev;
+//
+//	if (mHead == NULL)
+//		return false;
+//	else if (searchKey < mHead->mData || searchKey > mTail->mData)
+//		return false;
+//
+//	tmp = mHead;
+//	prev = NULL;
+//	for (int i = 0; i < mCount; i++)
+//	{
+//		if (searchKey == tmp->mData)
+//			break;
+//
+//		prev = tmp;
+//		tmp = tmp->mNext;
+//	}
+//
+//	if (tmp != NULL)
+//	{
+//		if (tmp == mHead)
+//		{
+//			tmp = mHead;
+//
+//			mHead = mHead->mNext;
+//			if (mHead == NULL)
+//				mTail = NULL;
+//
+//			tmp->mNext = NULL;
+//		}
+//		else if (tmp == mTail)
+//		{
+//			prev->mNext = NULL;
+//			mTail = prev;
+//		}
+//		else
+//		{
+//			prev->mNext = tmp->mNext;
+//			tmp->mNext = NULL;
+//		}
+//
+//		delete tmp;
+//		mCount--;
+//
+//		return true;
+//	}
+//
+//	return false;
+//}
 
 
 /*      Pre:  The list is instantiated and the index is valid
@@ -407,7 +388,7 @@ T LinkedList<T>::removeAt(int index)
 		else
 			previous->mNext = tmp->mNext;
 
-		data = tmp->mData;
+		data = tmp->mItemset;
 		tmp->mNext = NULL;
 		delete tmp;
 		mCount--;
