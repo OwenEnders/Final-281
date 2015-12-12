@@ -17,8 +17,24 @@ class Itemset:public ItemsetHolder
 public:
 	LinkedList<int> items;
 
-	/*void determineSupport();*/
+	int *mArray = new int[];
 
+
+	/*void determineSupport();*/
+	Itemset()
+	{
+		mArray = NULL;
+	}
+
+	Itemset(int* passArray)
+	{
+		mArray = passArray;
+	}
+
+	~Itemset()
+	{
+		delete[] mArray;
+	}
 private:
 
 	int support;
