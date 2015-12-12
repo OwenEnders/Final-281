@@ -1,8 +1,6 @@
 #include "classes.h"
 #include "functions.h"
 
-
-
 void ItemsetHolder::buildItemsets(int** database)
 {
 	//for single item itemsets, fill in linked list with the item of the itemset
@@ -10,13 +8,18 @@ void ItemsetHolder::buildItemsets(int** database)
 	//move to next spot in array and repeat
 	//when all single itemsets added, call pruneItemsets function
 	//for remaining itemsets, combind and repeat
+	
 
-	for (int i = 0; i < 100000; i++)  
-		for (int j = 1; j < 50; j++)
+	for (int i = 0; database[i][0] != NULL; i++)
+	{
+		int *dArray = new int[];
+
+		for (int j = 1; database[i][j] != NULL; j++)
 		{
-			items.insert(database[i][j]);
-
+			dArray[j-1] = database[i][j];
+			Itemset(dArray) ;
 		}
+	}
 }
 
 void ItemsetHolder::pruneItemsets( int support)

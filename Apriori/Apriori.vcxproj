@@ -70,7 +70,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="classes.h" />
-    <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="functions.h" />
     <ClInclude Include="linkedList.h" />
   </ItemGroup>

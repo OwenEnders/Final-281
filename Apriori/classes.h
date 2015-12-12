@@ -5,10 +5,10 @@
 class ItemsetHolder
 {
 public:
-	//DynamicArray itemsets;
+	// Linked list of itemsets;
 	
-	void buildItemsets(int** database);
-	void pruneItemsets();
+	void buildItemsets(int**);
+	void pruneItemsets(int);
 
 };
 
@@ -36,7 +36,5 @@ public:
 		delete[] mArray;
 	}
 private:
-
-	int support;
 
 };
