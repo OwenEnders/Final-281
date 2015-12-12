@@ -14,7 +14,9 @@ int** buildDatabase(string filename)
 	if (!inputFile.good())
 	{
 		cout << "\nFile not found!\n\n";
-		return databaseArray;
+		cout << "please enter a new name\n";
+		cin >> filename;
+		buildDatabase(filename);
 	}
 
 

@@ -17,7 +17,6 @@ int main()
 		string filename;
 		double support;
 
-		//maybe
 		ItemsetHolder setHolder;
 
 		cout << "Please select an option.\n\nR - Run Apriori\nQ - Quit\n\n";

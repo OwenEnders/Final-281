@@ -23,7 +23,8 @@ class LinkedList
 	template <typename R>
 	struct Node
 	{
-		R       mSupport, mItemset[];
+		R       mSupport;
+		int mItemset = new int [];
 		Node<T> *mNext;
 
 		/*      Pre:  None
