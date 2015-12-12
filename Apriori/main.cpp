@@ -1,6 +1,7 @@
 #include "classes.h"
 #include "functions.h"
 #include "linkedList.h"
+#include "DynamicArray.h"
 #include <iostream>
 #include <string>
 #include <fstream>

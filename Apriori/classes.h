@@ -17,7 +17,7 @@ class Itemset:public ItemsetHolder
 public:
 	LinkedList<int> items;
 
-	void determineSupport();
+	/*void determineSupport();*/
 
 private:
 

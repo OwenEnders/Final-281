@@ -69,6 +69,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Documents\Visual Studio 2013\Projects\LinkedListExperiment\LinkedListExperiment\DynamicArray.h" />
     <ClInclude Include="classes.h" />
     <ClInclude Include="functions.h" />
     <ClInclude Include="linkedList.h" />
