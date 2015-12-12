@@ -61,14 +61,14 @@ public:
 
 	int  getCount();
 	T    getData(int index);
-	void setData(int index, T data);
+	//void setData(int index, T data);
 
 	void clear();
 	void display();
 	bool insert(T data);
 	bool isEmpty();
 	bool isExist(T searchKey);
-	bool remove(T searchKey);
+	//bool remove(T searchKey);
 	T    removeAt(int index);
 
 	T operator[](int index);
