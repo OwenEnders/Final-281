@@ -296,8 +296,11 @@ bool LinkedList<T>::isExist(T searchKey)
 	tmp = mHead;
 	while (tmp != NULL && !found)
 	{
-		if (tmp->mData == searchKey)
+		if (tmp->mItemset == searchKey)
+		{
 			found = true;
+			tmp->mSupport = mSuppot++;
+		}
 
 		tmp = tmp->mNext;
 	}
