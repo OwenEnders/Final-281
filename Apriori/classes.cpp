@@ -9,18 +9,33 @@ void ItemsetHolder::buildItemsets(int** database)
 	//when all single itemsets added, call pruneItemsets function
 	//for remaining itemsets, combind and repeat
 	
-                 //database[i+1][0] != NULL
-	for (int i = 1; i < 100 ; i++)
+	for (int i = 0; i < 100000 ; i++)
 	{
-		int *dArray = new int[];
-                       //database[i][j + 1] != NULL
-		for (int j = 1; j< 50 ; j++)
+		if (database[i + 1][0] != NULL)
 		{
-			dArray[j - 1] = database[i][j];
-			cout << "\n location: [" << i << "] [" << j <<"] item: " << dArray[j-1] << endl;
-			Itemset(dArray);
+			int *dArray = new int[];
+
+			for (int j = 1; j < 50; j++)
+			{
+				if (database[i][j + 1] != NULL)
+				{
+					dArray[j - 1] = database[i][j];
+					cout << "\n location: [" << i << "] [" << j << "] item: " << dArray[j - 1] << endl;
+					Itemset(dArray);
+				}
+			}
 		}
 	}
+
+	for (int i = 0; i < 50; ++i)
+	{
+		for (int j = 0; j < 100000; ++j)
+		{
+			delete[] database[i];
+		}
+	}
+	delete[] database;
+
 }
 
 void ItemsetHolder::pruneItemsets( int support)
