@@ -1,5 +1,5 @@
-/* ***       Author:  Wei Kian Chen
-*  Last Update:  January 14, 2014
+/* ***       Author:  Wei Kian Chen, modified by Sam Poquette
+*  Last Update:  Dec 12, 2015
 *        Class:  CSI-281
 *     Filename:  linkedList.h
 *
@@ -23,10 +23,11 @@ class LinkedList
 	template <typename R>
 	struct Node
 	{
-		R       mSupport, mItemset[];
+		R       mSupport;
+		int mItemset = new int[];
 		Node<T> *mNext;
 
-		/*      Pre:  None
+		/*     Pre:  None
 		*     Post:  This object is initialized using default values
 		*  Purpose:  To initialize date object
 		*************************************************************************/
@@ -75,7 +76,7 @@ public:
 };
 
 
-/*      Pre:  None
+/*     Pre:  None
 *     Post:  This object is initialized using the default
 *  Purpose:  To initialize date object
 *****************************************************************************/
@@ -119,7 +120,7 @@ int LinkedList<T>::getCount()
 
 
 /*      Pre:  The list is instantiated and the index is valid
-*     Post:  The data in the specified index is returned to the caller
+*     Post:  The itemset array in the specified index is returned to the caller
 *  Purpose:  To retrieve the specified nodes in the list
 *****************************************************************************/
 template <typename T>
@@ -181,7 +182,7 @@ void LinkedList<T>::clear()
 
 
 
-/*      Pre:  The list is instantiated
+/*     Pre:  The list is instantiated
 *     Post:  The entire list is displayed on the screen
 *  Purpose:  To show the content of the list
 *****************************************************************************/
@@ -206,10 +207,11 @@ void LinkedList<T>::display()
 }
 
 
-/*      Pre:  The list is instantiated and the data is available
+/*     Pre:  The list is instantiated and the data is available
 *     Post:  The data is inserted in ascending order
-*  Purpose:  To insert a data into the list in ascending order.  However, if
-*            the data already existed in the list, it will not be added again
+*  Purpose:  To insert an itemset array into the list.  However, if the 
+*            itemset already existed in the list, it will not be added again,
+*			 instead increasing the support of the itemset that already exists
 *****************************************************************************/
 template <typename T>
 bool LinkedList<T>::insert(T data)
@@ -229,19 +231,20 @@ bool LinkedList<T>::insert(T data)
 	{
 		tmp = mHead;
 		oneBefore = mHead;
-		while (tmp->mItemset < data)
+		while (tmp->mItemset[] < data)
 		{
 			oneBefore = tmp;
 			tmp = tmp->mNext;
 		}
 
-		if (tmp->mItemset != data)
+		if (tmp->mItemset[] != data)
 		{
 			newNode->mNext = tmp;
 			oneBefore->mNext = newNode;
 		}
 		else
 		{
+			tmp->mSupport = mSupport++;
 			delete newNode;
 			return false;
 		}
@@ -253,7 +256,7 @@ bool LinkedList<T>::insert(T data)
 }
 
 
-/*      Pre:  The list is instantiated
+/*     Pre:  The list is instantiated
 *     Post:  The function returns true is the list is empty; false otherwise
 *  Purpose:  To determine if the list is empty
 *****************************************************************************/
@@ -264,10 +267,10 @@ bool LinkedList<T>::isEmpty()
 }
 
 
-/*      Pre:  The list is instantiated and the searchKey is available
+/*     Pre:  The list is instantiated and the searchKey is available
 *     Post:  The function returns true if the search key exists in the list;
 *            otherwise false
-*  Purpose:  To determine if a specific value exists in the list or not
+*  Purpose:  To determine if a specific itemset exists in the list or not
 *****************************************************************************/
 template <typename T>
 bool LinkedList<T>::isExist(T searchKey)
@@ -278,7 +281,7 @@ bool LinkedList<T>::isExist(T searchKey)
 	tmp = mHead;
 	while (tmp != NULL && !found)
 	{
-		if (tmp->mItemset == searchKey)
+		if (tmp->mItemset[] == searchKey)
 		{
 			found = true;
 			tmp->mSupport = mSuppot++;
@@ -351,7 +354,7 @@ bool LinkedList<T>::isExist(T searchKey)
 //}
 
 
-/*      Pre:  The list is instantiated and the index is valid
+/*     Pre:  The list is instantiated and the index is valid
 *     Post:  Remove the element in the specified index location and returns
 *            its content to the caller.  If the index location is invalid, the
 *            function returns the default value
@@ -399,7 +402,7 @@ T LinkedList<T>::removeAt(int index)
 }
 
 
-/*      Pre:  The list is instantiated and the index is valid
+/*     Pre:  The list is instantiated and the index is valid
 *     Post:  The data in the specified index is returned to the caller
 *  Purpose:  To retrieve the specified nodes in the list using [] operator
 *****************************************************************************/
